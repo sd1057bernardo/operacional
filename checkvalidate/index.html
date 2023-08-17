@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checador de validade</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/instascan/1.0.0/instascan.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Days Left Calculator</title>
 </head>
 <body>
-    <h3>Verifique a validade do produto aqui!.</h3>
-    <video id="preview"></video>
-    <div id="barcode-result"></div>
+  <div class="container">
+    <h1>Days Left Calculator</h1>
+    <form id="item-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+      <label for="date">Date:</label>
+      <input type="date" id="date" required>
+      <button type="submit">Calculate Days Left</button>
+    </form>
+    <ul id="item-list"></ul>
+  </div>
+  <script src="scripts.js"></script>
 </body>
-<script type="text/javascript" src="./scripts.js"></script>
 </html>
