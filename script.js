@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const btn3 = document.getElementById('btn3');
 
   btn1.addEventListener('click', function () {
-    window.location.href = './checkvalidate/';
+    window.location.href = '/checkvalidate/';
   });
 
   btn2.addEventListener('click', function () {
-    window.location.href = './imprimirp';
+    window.location.href = '/imprimirp';
   });
 
   btn3.addEventListener('click', function () {
-    window.location.href = './imprimirg';
+    window.location.href = '/imprimirg';
   });
 });
