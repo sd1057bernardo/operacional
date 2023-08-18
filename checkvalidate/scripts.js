@@ -38,6 +38,10 @@ document.addEventListener('DOMContentLoaded', function () {
     itemList.innerHTML = '';
   
     const items = JSON.parse(localStorage.getItem('items')) || [];
+  
+    // Sort the items based on daysLeft in descending order
+    items.sort((a, b) => b.daysLeft - a.daysLeft);
+  
     items.forEach(function (item) {
       const li = document.createElement('li');
       const daysLeft = item.daysLeft;
@@ -55,9 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
       li.innerHTML = `<strong>${item.name}</strong> - ${item.date} (Days left: <span class="${colorClass}">${item.daysLeft}</span>)`;
       itemList.appendChild(li);
     });
-  }
-  
-
+  } 
   // Initial display of items
   displayItems();
 });
