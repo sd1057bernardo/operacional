@@ -36,14 +36,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function displayItems() {
     itemList.innerHTML = '';
-
+  
     const items = JSON.parse(localStorage.getItem('items')) || [];
     items.forEach(function (item) {
       const li = document.createElement('li');
-      li.innerHTML = `<strong>${item.name}</strong> - ${item.date} (Days left: ${item.daysLeft})`;
+      const daysLeft = item.daysLeft;
+  
+      let colorClass = '';
+  
+      if (daysLeft < 0) {
+        colorClass = 'expired';
+      } else if (daysLeft <= 7) {
+        colorClass = 'urgent';
+      } else if (daysLeft <= 30) {
+        colorClass = 'warning';
+      }
+  
+      li.innerHTML = `<strong>${item.name}</strong> - ${item.date} (Days left: <span class="${colorClass}">${item.daysLeft}</span>)`;
       itemList.appendChild(li);
     });
   }
+  
 
   // Initial display of items
   displayItems();
