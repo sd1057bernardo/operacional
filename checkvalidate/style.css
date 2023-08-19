@@ -47,7 +47,7 @@ body {
     margin-bottom: 5px;
     border-radius: 5px;
   }
-  .urgent {
+  .urgent, .highlight{
     color: red; /* Or any other color you prefer */
   }
   

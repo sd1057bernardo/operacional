@@ -37,12 +37,12 @@ document.addEventListener('DOMContentLoaded', function () {
   function displayItems() {
     itemList.innerHTML = '';
   
-    const items = JSON.parse(localStorage.getItem('items')) || [];
+    let items = JSON.parse(localStorage.getItem('items')) || [];
   
-    // Sort the items based on daysLeft in descending order
-    items.sort((a, b) => b.daysLeft - a.daysLeft);
+    // Sort the items based on dates in ascending order
+    items.sort((a, b) => new Date(a.date) - new Date(b.date));
   
-    items.forEach(function (item) {
+    items.forEach(function (item, index) {
       const li = document.createElement('li');
       const daysLeft = item.daysLeft;
   
@@ -52,14 +52,36 @@ document.addEventListener('DOMContentLoaded', function () {
         colorClass = 'expired';
       } else if (daysLeft <= 7) {
         colorClass = 'urgent';
+        li.classList.add('highlight'); // Add a class to highlight the <li> element
       } else if (daysLeft <= 30) {
         colorClass = 'warning';
       }
   
-      li.innerHTML = `<strong>${item.name}</strong> - ${item.date} (Days left: <span class="${colorClass}">${item.daysLeft}</span>)`;
+      li.innerHTML = `
+        <strong>${item.name}</strong> - ${item.date} (Days left: <span class="${colorClass}">${item.daysLeft}</span>)
+        <button class="delete-btn" data-index="${index}">Delete</button>
+      `;
+  
       itemList.appendChild(li);
     });
-  } 
+  
+    // Attach event listeners to the delete buttons
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    deleteButtons.forEach(button => {
+      button.addEventListener('click', handleDelete);
+    });
+  }
+
+  function handleDelete(event) {
+    const index = event.target.getAttribute('data-index');
+    let items = JSON.parse(localStorage.getItem('items')) || [];
+    
+    items.splice(index, 1); // Remove the item at the specified index
+    localStorage.setItem('items', JSON.stringify(items));
+    
+    displayItems(); // Refresh the displayed items
+  }
+    
   // Initial display of items
   displayItems();
 });
