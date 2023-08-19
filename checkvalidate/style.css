@@ -27,7 +27,7 @@ body {
     border-radius: 5px;
   }
   
-  form button {
+  form button , .back{
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
