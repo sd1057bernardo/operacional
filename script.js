@@ -9,6 +9,8 @@ Quagga.init({
     inputStream : {
       name : "Live",
       type : "LiveStream",
+      width: 240,
+      height: 280,
       target: document.querySelector('.panel')    // Or '#yourElement' (optional)
     },
     decoder : {
