@@ -39,7 +39,7 @@ body {
   transition: opacity 0.3s ease-in-out;
 }
 
-.panel{
-  max-width: 100%;
+.box .panel{
+  max-width: 70%;
   height:150px;
 }
